@@ -67,16 +67,17 @@ def chunk_text(paragraphs, chunk_size=1200):
 
 def convert_chunk_to_brainrot(text, job_id):
     """Send chunk to Ollama Mistral for conversion"""
-    prompt = f"""Convert to Gen Z/brainrot slang: '{text}' while keeping meaning similar. Keep technical terms. Preserve punctuation."""
+    prompt = f"""Convert to Gen Z/brainrot slang: "{text}" while keeping meaning similar. Keep technical terms. Preserve punctuation."""
     
     try:
         response = ollama.generate(
             model='mistral',
             prompt=prompt,
-            stream=False,
-            host='http://localhost:11434'
+            stream=False
         )
-        return response['response'].strip()
+        result = response['response'].strip()
+        print(f"Converted chunk {job_id}: {len(result)} chars")
+        return result
     except Exception as e:
         print(f"Error converting chunk: {e}")
         # Log the error for debugging
