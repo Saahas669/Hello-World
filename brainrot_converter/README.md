@@ -21,7 +21,6 @@ Convert your textbooks to Gen Z brainrot speak using AI! Upload a PDF, and watch
 - **Concurrency:** Python threading for parallel processing
 
 ## Prerequisites
-
 ### ⚠️ CRITICAL: Install and Run Ollama FIRST
 
 The app will NOT work without Ollama running. Ollama is the local AI engine that powers the brainrot conversion.

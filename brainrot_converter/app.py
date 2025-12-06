@@ -68,7 +68,7 @@ def chunk_text(paragraphs, chunk_size=600):
 def convert_chunk_to_brainrot(text, job_id):
     """Send chunk to Ollama Mistral for conversion"""
     # Simpler, shorter prompt for faster responses
-    prompt = f"""Make this Gen Z slang: {text}"""
+    prompt = f"""Make this Gen Z slang: {text}. ONLY give the output for the text provided, do NOT add any extra commentary or explanation."""
     
     try:
         response = ollama.generate(
