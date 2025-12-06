@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brainrot Textbook Converter</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🧠 Brainrot Textbook Converter</h1>
+            <p class="subtitle">Convert your textbooks to Gen Z brainrot speak</p>
+        </header>
+
+        <main>
+            <!-- Upload Section -->
+            <section id="uploadSection" class="upload-section">
+                <div class="upload-box" id="uploadBox">
+                    <svg class="upload-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                    <h2>Drag and drop your PDF here</h2>
+                    <p>or click to select a file</p>
+                    <input type="file" id="fileInput" accept=".pdf" style="display: none;">
+                </div>
+                <button id="selectBtn" class="btn btn-primary">Select PDF File</button>
+                <p class="file-info">Maximum file size: 5MB</p>
+            </section>
+
+            <!-- Progress Section -->
+            <section id="progressSection" class="progress-section" style="display: none;">
+                <div class="progress-container">
+                    <h2>Converting your textbook...</h2>
+                    
+                    <div class="status-info">
+                        <p><strong>Status:</strong> <span id="statusText">Initializing...</span></p>
+                        <p><strong>Progress:</strong> <span id="progressText">0%</span></p>
+                        <p id="chunkInfo" style="display: none;"><strong>Chunks:</strong> <span id="chunkText">0/0</span></p>
+                        <p id="timeInfo" style="display: none;"><strong>Estimated time remaining:</strong> <span id="timeText">--</span></p>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="progressFill" class="progress-fill"></div>
+                    </div>
+
+                    <div class="progress-details">
+                        <span id="detailsText">Starting conversion...</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Completion Section -->
+            <section id="completionSection" class="completion-section" style="display: none;">
+                <div class="success-message">
+                    <svg class="success-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <polyline points="20 6 9 17 4 12"></polyline>
+                    </svg>
+                    <h2>Conversion Complete!</h2>
+                    <p id="completionText">Your brainrot textbook is ready to download.</p>
+                </div>
+                <button id="downloadBtn" class="btn btn-success">Download Brainrot PDF</button>
+                <button id="convertAnotherBtn" class="btn btn-secondary">Convert Another File</button>
+            </section>
+
+            <!-- Error Section -->
+            <section id="errorSection" class="error-section" style="display: none;">
+                <div class="error-message">
+                    <svg class="error-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <h2>Conversion Failed</h2>
+                    <p id="errorText">An error occurred during conversion.</p>
+                </div>
+                <button id="retryBtn" class="btn btn-primary">Try Again</button>
+            </section>
+        </main>
+
+        <footer>
+            <p>&copy; 2024 Brainrot Converter | Convert your textbooks to peak Gen Z</p>
+        </footer>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

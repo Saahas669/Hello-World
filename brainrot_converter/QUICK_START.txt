@@ -1,0 +1,106 @@
+# 🧠 Brainrot Converter - Quick Start Guide
+
+## THE ONE THING YOU MUST DO
+
+**Ollama must be running BEFORE you upload PDFs**
+
+If conversions show original text instead of brainrot, it's because Ollama isn't running.
+
+## Step-by-Step Setup
+
+### Step 1: Install Ollama (One-time only)
+
+1. Visit **[ollama.ai](https://ollama.ai)**
+2. Download and install for your OS
+3. Open a terminal and verify: `ollama --version`
+
+### Step 2: Download Mistral Model (One-time only)
+
+Open terminal and run:
+```
+ollama pull mistral
+```
+
+This downloads ~4GB. Grab a coffee ☕, it takes a few minutes.
+
+### Step 3: Start the Converter (Every time you use it)
+
+**FASTEST WAY (Windows):**
+- Find `START.bat` in the `brainrot_converter` folder
+- Double-click it
+- Everything starts automatically! ✨
+- Browser opens at http://localhost:5000
+
+**MANUAL WAY:**
+
+Terminal 1 (Ollama):
+```bash
+ollama serve
+```
+
+Terminal 2 (Flask App):
+```bash
+cd Hello-World/brainrot_converter
+venv\Scripts\activate  # Windows
+# or: source venv/bin/activate  # Mac/Linux
+python app.py
+```
+
+Visit: http://localhost:5000
+
+## How to Use
+
+1. **Upload a PDF** - Drag and drop into the upload box
+2. **Wait** - Watch the progress bar (usually 5-20 seconds)
+3. **Download** - Get your brainrot PDF!
+
+## Common Issues & Fixes
+
+### "Ollama is not running"
+→ Open new terminal, run: `ollama serve`
+
+### "Connection refused" 
+→ Wait 2-3 seconds after starting Ollama, then refresh page
+
+### Downloaded PDF has original text (not brainrot)
+1. Make sure Ollama is running (`ollama serve`)
+2. Try converting again
+3. Check browser F12 console for errors
+4. Check Flask terminal for error logs
+
+### Very slow conversion
+- First conversion takes longer (model loads into memory)
+- Need good CPU: Intel i7/AMD Ryzen 5+
+- Need 8GB+ RAM
+
+### Port 5000 in use
+- Close other apps using that port, OR
+- Edit app.py last line: change `port=5000` to `port=5001`
+
+## Test Your Setup
+
+```bash
+cd Hello-World/brainrot_converter
+venv\Scripts\activate  # Windows
+python test_setup.py
+```
+
+This verifies Ollama is working before you upload files.
+
+## Example Conversions
+
+| Original | Brainrot |
+|----------|----------|
+| "The mitochondria is the powerhouse of the cell" | "Bruh the mitochondria is literally the main character of the cell" |
+| "Photosynthesis is a biochemical process" | "Photosynthesis lowkey just plants eating sunlight no cap" |
+
+## Need Help?
+
+1. Check README.md for full documentation
+2. Check browser console (F12) for error messages
+3. Check Flask terminal for logs
+4. Make sure Ollama is running!
+
+---
+
+**Remember:** Ollama running = conversions work. Ollama not running = same PDF back. 🚀
