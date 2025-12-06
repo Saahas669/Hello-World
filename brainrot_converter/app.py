@@ -41,7 +41,7 @@ def extract_text_from_pdf(pdf_path):
         print(f"Error extracting PDF: {e}")
     return paragraphs
 
-def chunk_text(paragraphs, chunk_size=1200):
+def chunk_text(paragraphs, chunk_size=600):
     """Split paragraphs into chunks of approximately chunk_size words"""
     chunks = []
     current_chunk = []
@@ -67,11 +67,12 @@ def chunk_text(paragraphs, chunk_size=1200):
 
 def convert_chunk_to_brainrot(text, job_id):
     """Send chunk to Ollama Mistral for conversion"""
-    prompt = f"""Convert to Gen Z/brainrot slang: "{text}" while keeping meaning similar. Keep technical terms. Preserve punctuation."""
+    # Simpler, shorter prompt for faster responses
+    prompt = f"""Make this Gen Z slang: {text}"""
     
     try:
         response = ollama.generate(
-            model='mistral',
+            model='neural-chat',  # Faster than mistral (change to 'mistral' if you prefer quality over speed)
             prompt=prompt,
             stream=False
         )
